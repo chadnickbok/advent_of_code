@@ -15,18 +15,19 @@ for line in lines:
         print("heck", line)
         break
 
-    n_min = int(m.group(1))
-    n_max = int(m.group(2))
+    i_first = int(m.group(1)) - 1
+    i_second = int(m.group(2)) - 1
     char = m.group(3)
+    password = m.group(4)
 
-    n = 0
-    for a in m.group(4):
-        if a is char:
-            n += 1
-    
-    if n >= n_min and n <= n_max:
+    char_first = password[i_first]
+    char_second = password[i_second]
+
+    first_right = char_first is char
+    second_right = char_second is char
+
+    if first_right != second_right:
         valid_count += 1
-
 
 print(valid_count)
 
